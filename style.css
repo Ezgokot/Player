@@ -1,0 +1,28 @@
+body {
+  color: #222;
+  background: #fff;
+  font: 100% system-ui;
+}
+
+input {
+  display: block;
+  margin: 0, auto;
+  padding-top: 20px;
+}
+
+
+audio {
+  display: block;
+  margin: 0, auto;
+}
+
+a {
+  color: #0033cc;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: #121212;
+  }
+}
