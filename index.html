@@ -1,15 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electron Music Player</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Music Player</title>
+    <style>
+        #dropArea {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #songList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #songList li {
+            margin: 5px 0;
+        }
+        body{
+          background-color: darkgray;
+              }
+        h1{
+          color: aliceblue;
+          text-shadow: 3%;
+          opacity: 85%;
+          text-align: center;
+        }
+      #playPause img{
+        width: 50px;
+        height: 50px;
+        background-color: darkgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: darkgray;
+      }
+      #playPause{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: darkgray;
+
+      }
+    </style>
 </head>
 <body>
-  <h1>Music Player</h1>
-  <audio id="audioPlayer" controls></audio>
-  <input type="file" id="fileInput" accept="audio/*">
-  <script src="renderer.js"></script>
+    <h1>Music Player</h1>
+    <div id="dropArea">Añada sus canciones aqui</div>
+    <ul id="songList"></ul>
+    <button id="playPause"> <img src="Source/play-pause-bottom.png"></button>
+    <script src="renderer.js"></script>
 </body>
 </html>

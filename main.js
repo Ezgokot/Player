@@ -1,27 +1,20 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
-function createWindow() {
-  const win = new BrowserWindow({
-    minHeight: 300,
-    minWidth: 600,
-  });
+let mainWindow;
 
-  win.loadFile('index.html');
-}
+app.on('ready', () => {
+    mainWindow = new BrowserWindow({
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+            contextIsolation: true,
+            enableRemoteModule: false
+        }
+    });
 
-app.whenReady().then(() => {
-  createWindow();
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
+    mainWindow.loadFile('index.html');
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+ipcMain.on('dropped-files', (event, filePaths) => {
+  event.reply('dropped-file-response', filePaths)
+})
